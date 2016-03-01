@@ -1,0 +1,26 @@
+{
+  "name": "steve-time",
+  "version": "1.0.0",
+  "description": "A real time application used for crowd sourcing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jillmd501/Steve-Time.git"
+  },
+  "keywords": [
+    "express",
+    "npm",
+    "javascript",
+    "steve",
+    "kinney"
+  ],
+  "author": "Jill Donohue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jillmd501/Steve-Time/issues"
+  },
+  "homepage": "https://github.com/jillmd501/Steve-Time#readme"
+}
