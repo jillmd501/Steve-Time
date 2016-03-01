@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/jillmd501/Steve-Time/issues"
   },
-  "homepage": "https://github.com/jillmd501/Steve-Time#readme"
+  "homepage": "https://github.com/jillmd501/Steve-Time#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
