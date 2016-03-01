@@ -47,13 +47,13 @@ describe('Server', () => {
   });
 });
 
-  describe('POST /pizzas', () => {
+  describe('POST /polls', () => {
     beforeEach(() => {
-    app.locals.pizzas = {};
+    app.locals.polls = {};
   });
 
     it('should not return 404', (done) => {
-    this.request.post('/pizzas', (error, response) => {
+    this.request.post('/polls', (error, response) => {
       if (error) { done(error); }
       assert.notEqual(response.statusCode, 404);
       done();
@@ -61,51 +61,51 @@ describe('Server', () => {
   });
 
   it('should receive and store data', (done) => {
-  var payload = { pizza: fixtures.validPizza };
+  var payload = { poll: fixtures.validPoll };
 
-  this.request.post('/pizzas', { form: payload }, (error, response) => {
+  this.request.post('/polls', { form: payload }, (error, response) => {
     if (error) { done(error); }
 
-    var pizzaCount = Object.keys(app.locals.pizzas).length;
+    var pollCount = Object.keys(app.locals.polls).length;
 
-    assert.equal(pizzaCount, 1, `Expected 1 pizzas, found ${pizzaCount}`);
+    assert.equal(pollCount, 1, `Expected 1 polls, found ${pollCount}`);
 
     done();
     });
   });
 
-  describe('GET /pizzas/:id', () => {
+  describe('GET /polls/:id', () => {
 
     beforeEach(() => {
-      app.locals.pizzas.testPizza = fixtures.validPizza;
+      app.locals.polls.testpoll = fixtures.validPoll;
     });
 
     it('should not return 404', (done) => {
-      this.request.get('/pizzas/testPizza', (error, response) => {
+      this.request.get('/polls/testPoll', (error, response) => {
         if (error) { done(error); }
         assert.notEqual(response.statusCode, 404);
         done();
       });
     });
 
-    it('should return a page that has the title of the pizza', (done) => {
-      var pizza = app.locals.pizzas.testPizza;
+    it('should return a page that has the title of the poll', (done) => {
+      var poll = app.locals.polls.testPoll;
 
-      this.request.get('/pizzas/testPizza', (error, response) => {
+      this.request.get('/polls/testPoll', (error, response) => {
         if (error) { done(error); }
-        assert(response.body.includes(pizza.name),
-               `"${response.body}" does not include "${pizza.name}".`);
+        assert(response.body.includes(poll.name),
+               `"${response.body}" does not include "${poll.name}".`);
         done();
       });
     });
 
-    it('should redirect the user to their new pizza', (done) => {
-      var payload = { pizza: fixtures.validPizza };
+    it('should redirect the user to their new poll', (done) => {
+      var payload = { poll: fixtures.validPoll };
 
-      this.request.post('/pizzas', { form: payload }, (error, response) => {
+      this.request.post('/polls', { form: payload }, (error, response) => {
         if (error) { done(error); }
-        var newPizzaId = Object.keys(app.locals.pizzas)[0];
-        assert.equal(response.headers.location, '/pizzas/' + newPizzaId);
+        var newPollId = Object.keys(app.locals.polls)[0];
+        assert.equal(response.headers.location, '/polls/' + newPollId);
         done();
       });
     });

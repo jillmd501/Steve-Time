@@ -6,7 +6,7 @@ const generateId = require('./lib/generate-id');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.locals.pizzas = {};
+app.locals.polls = {};
 
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Steve Time';
@@ -18,20 +18,20 @@ app.get('/', (request, response) => {
   response.render('index');
 });
 
-app.get('/pizzas/:id', (request, response) => {
-  var pizza = app.locals.pizzas[request.params.id];
+app.get('/polls/:id', (request, response) => {
+  var poll = app.locals.polls[request.params.id];
 
-  response.render('pizza', { pizza: pizza });
+  response.render('poll', { poll: poll });
 });
 
-app.post('/pizzas', (request, response) => {
-  if (!request.body.pizza) { return response.sendStatus(400); }
+app.post('/polls', (request, response) => {
+  if (!request.body.poll) { return response.sendStatus(400); }
 
   var id = generateId();
 
-  app.locals.pizzas[id] = request.body.pizza;
+  app.locals.polls[id] = request.body.poll;
 
-  response.redirect('/pizzas/' + id);
+  response.redirect('/polls/' + id);
 });
 
 if (!module.parent) {

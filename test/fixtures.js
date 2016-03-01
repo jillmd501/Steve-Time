@@ -1,4 +1,4 @@
-exports.validPizza = {
-  name: 'A vegan pizza',
-  toppings: [ 'mushrooms', 'onions', 'garlic', 'black olives' ]
+exports.validPoll = {
+  name: 'A Fun Poll',
+  options: [ 'Yay', 'Nay', 'Okay', 'Hay?' ]
 };
